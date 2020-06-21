@@ -1,16 +1,11 @@
-/*
- * @Description: 
- * @Autor: tianzhen
- * @Date: 2020-06-14 16:39:15
- */
 module.exports = {
-    title: 'tianzhen的博客',
+    title: 'korn的博客',
+    base: "/blog/",
     description: '专注 Node.js 技术栈分享，从前端到Node.js再到数据库',
     themeConfig: {
         sidebar: {
-            "/node/":[
-                ["", "node目录"],
-                ["path", "作为前端也需要知道的路径知识"],
+            "/node/": [
+                ["learn", "学习"],
             ],
             "/web/": [
                 {
@@ -18,38 +13,70 @@ module.exports = {
                     name: "css",
                     collabsable: false,
                     children: [
-                        ['css/1', "css常考面试题"],
-                        ['css/2','css 总结']
+                        ['css/css 面试题', "css常考面试题"],
+                        ['css/canvas', 'canvas'],
                     ]
                 },
                 {
-                    title: "html",
-                    name: "html",
+                    title: "js",
+                    name: "js",
                     collabsable: false,
                     children: [
-                        ['html/1', "css常考面试题"],
+                        ['js/js 面试题', "js常考面试题"],
+                        ['js/错误上报', "错误上报"],
+                        ['js/this 指向', "this 指向"],
+                        ['js/typescript', "typescript"]
+                    ]
+                },
+                {
+                    title: "vue",
+                    name: "vue",
+                    collabsable: false,
+                    children: [
+                        ['vue/vue-router', "vue-router"],
+                        ['vue/vuex', "vuex"],
+                        ['vue/vue 面试题', "vue 面试题"],
+                        ['vue/自定义指令', "自定义指令"],
+                    ]
+                },
+                {
+                    title: "network",
+                    name: "network",
+                    collabsable: false,
+                    children: [
+                        ['network/网络', "网络"],
+                        ['network/https', "https"],
+                    ]
+                },
+                {
+                    title: "webpack",
+                    name: "webpack",
+                    collabsable: false,
+                    children: [
+                        ['webpack/learn', "learn"],
                     ]
                 }
 
             ],
         },
-        nav: [{ text: "主页", link: "/" },
-        {
-            text: "前端",
-            items: [
-                { text: "html", link: "/web/html/" },
-                { text: "css", link: "/web/css/" },
-                { text: "vue", link: "/web/vue/" },
-            ]
-        },
-        { text: "node", link: "/node/" },
-        { text: "数据库", link: "/database/" },
-        { text: "面试问题", link: "/interview/" }
+        nav: [
+            { text: "主页", link: "/" },
+            {
+                text: "前端",
+                items: [
+                    { text: "css", link: "/web/css/css 面试题" },
+                    { text: "js", link: "/web/js/js 面试题" },
+                    { text: "vue", link: "/web/vue/vue 面试题" },
+                    { text: "network", link: "/web/network/网络" },
+                    { text: "webpack", link: "/web/webpack/learn" }
+                ]
+            },
+            { text: "node", link: "/node/learn" },
         ],
         plugins: [
             ["@vuepress/back-to-top"], // 返回顶部
             ["@vuepress/nprogress"],   // 加载进度条
-        ]
+        ],
 
     }
 }
