@@ -1,5 +1,3 @@
-[TOC]
-
 ### vue 双向绑定原理  
 
 + Vue是采用数据劫持配合发布者-订阅者模式，通过Object.defineProperty()来劫持各个属性的getter和setter 在数据发生变化的时候，发布消息给依赖收集器，去通知观察者，做出对应的回调函数去更新视图。 
@@ -240,20 +238,4 @@ plugin是一个扩展器，它丰富了wepack本身，针对是loader结束后�
 6. 合理的划分组件，有助于提升应用性能；
 7. 组件应该是高内聚、低耦合的；
 8. 遵循单向数据流的原则。
-
-### 前端错误收集（vue）
-
-Vue提供了一个全局配置errorHandler，用于收集Vue运行时发生的错误。
-
-用法：
-
-```javascript
-Vue.config.errorHandler = function (err, vm, info) {
-  // handle error
-  //`err`是js错误栈信息，可以获取到具体的js报错位置。
-  //`vm` vue实例
-  //`info` 是 Vue 特定的错误信息，比如错误所在的生命周期钩子
-  // 只在 2.2.0+ 可用
-}
-```
 

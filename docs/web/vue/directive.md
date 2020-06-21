@@ -1,4 +1,4 @@
-# directive
+# directive 自定义指令
 
 ## 钩子函数
 

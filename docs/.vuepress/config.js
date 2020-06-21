@@ -13,7 +13,7 @@ module.exports = {
                     name: "css",
                     collabsable: false,
                     children: [
-                        ['css/css 面试题', "css常考面试题"],
+                        ['css/css', "css常考面试题"],
                         ['css/canvas', 'canvas'],
                     ]
                 },
@@ -22,8 +22,8 @@ module.exports = {
                     name: "js",
                     collabsable: false,
                     children: [
-                        ['js/js 面试题', "js常考面试题"],
-                        ['js/错误上报', "错误上报"],
+                        ['js/js', "js常考面试题"],
+                        ['js/errorReport', "错误上报"],
                         ['js/this 指向', "this 指向"],
                         ['js/typescript', "typescript"]
                     ]
@@ -35,8 +35,8 @@ module.exports = {
                     children: [
                         ['vue/vue-router', "vue-router"],
                         ['vue/vuex', "vuex"],
-                        ['vue/vue 面试题', "vue 面试题"],
-                        ['vue/自定义指令', "自定义指令"],
+                        ['vue/vue', "vue 面试题"],
+                        ['vue/directive', "自定义指令"]
                     ]
                 },
                 {
@@ -44,7 +44,7 @@ module.exports = {
                     name: "network",
                     collabsable: false,
                     children: [
-                        ['network/网络', "网络"],
+                        ['network/network', "网络"],
                         ['network/https', "https"],
                     ]
                 },
@@ -64,10 +64,10 @@ module.exports = {
             {
                 text: "前端",
                 items: [
-                    { text: "css", link: "/web/css/css 面试题" },
-                    { text: "js", link: "/web/js/js 面试题" },
-                    { text: "vue", link: "/web/vue/vue 面试题" },
-                    { text: "network", link: "/web/network/网络" },
+                    { text: "css", link: "/web/css/css" },
+                    { text: "js", link: "/web/js/js" },
+                    { text: "vue", link: "/web/vue/vue" },
+                    { text: "network", link: "/web/network/network" },
                     { text: "webpack", link: "/web/webpack/learn" }
                 ]
             },
