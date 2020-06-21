@@ -220,8 +220,6 @@ http://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html
 
 ### 事件循环(Event Loop)
 
-​	![eventLoop](/Users/tianzhen/myproject/notes/note-study/题/eventLoop.jpg)
-
 首先，整体的script(作为第一个宏任务)开始执行的时候，会把所有代码分为`同步任务`、`异步任务`两部分
 
 同步任务会直接进入主线程依次执行
@@ -410,7 +408,7 @@ per2.say();
 
 * `__proto__`是对象自动添加的一个对象，它指向构造函数的原型对象 prototype
 
-  <img src="/Users/tianzhen/myproject/notes/note-study/组件的生命周期.png" alt="image-20200226154459348" style="zoom:50%;" />
+  <img src="../../assets/组件的生命周期.png" alt="image-20200226154459348" style="zoom:50%;" />
 
 * 构造函数的 constructor
 
@@ -422,11 +420,11 @@ per2.say();
 
   + 构造函数、实例、原型对象之间的关系
 
-    <img src="/Users/tianzhen/myproject/notes/note-study/关系.png" alt="image-20200226161218977" style="zoom:50%;" />
+    <img src="../../assets/关系.png" alt="image-20200226161218977" style="zoom:50%;" />
 
   + 原型链
 
-    ![image-20200226162428063](/Users/tianzhen/myproject/notes/note-study/原型链.png)
+    ![image-20200226162428063](../../assets/原型链.png)
 
 
 

@@ -28,7 +28,7 @@
 
 ###  如何让CSS只在当前组件中起作用
 
-+ answer：将当前组件的<style>修改为<style scoped>
++ answer：将当前组件的`<style>`修改为`<style scoped>`
 
 ### vue 中常用的指令 
 
