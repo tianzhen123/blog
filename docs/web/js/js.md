@@ -408,7 +408,7 @@ per2.say();
 
 * `__proto__`是对象自动添加的一个对象，它指向构造函数的原型对象 prototype
 
-  <img src="../../assets/组件的生命周期.png" alt="image-20200226154459348" style="zoom:50%;" />
+  <img src="https://raw.githubusercontent.com/tianzhen123/blog/master/docs/assets/3.png" alt="image-20200226154459348" style="zoom:50%;" />
 
 * 构造函数的 constructor
 
@@ -420,11 +420,11 @@ per2.say();
 
   + 构造函数、实例、原型对象之间的关系
 
-    <img src="../../assets/关系.png" alt="image-20200226161218977" style="zoom:50%;" />
+    <img src="https://raw.githubusercontent.com/tianzhen123/blog/master/docs/assets/1.png" alt="关系" style="zoom:50%;" />
 
   + 原型链
 
-    ![image-20200226162428063](../../assets/原型链.png)
+    ![原型链](https://raw.githubusercontent.com/tianzhen123/blog/master/docs/assets/2.png)
 
 
 
