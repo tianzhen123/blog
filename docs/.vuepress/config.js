@@ -1,7 +1,7 @@
 module.exports = {
     title: 'korn的博客',
     base: "/blog/",
-    description: '专注 Node.js 技术栈分享，从前端到Node.js再到数据库',
+    description: '专注 前端 技术栈分享，从前端到Node.js再到数据库',
     themeConfig: {
         sidebar: {
             "/node/": [
@@ -36,7 +36,8 @@ module.exports = {
                         ['vue/vue-router', "vue-router"],
                         ['vue/vuex', "vuex"],
                         ['vue/vue', "vue 面试题"],
-                        ['vue/directive', "自定义指令"]
+                        ['vue/directive', "自定义指令"],
+                        ['vue/优化', "优化指南"]
                     ]
                 },
                 {
@@ -77,6 +78,7 @@ module.exports = {
             ["@vuepress/back-to-top"], // 返回顶部
             ["@vuepress/nprogress"],   // 加载进度条
         ],
+        lastUpdated: '上次更新时间'
 
     }
 }
