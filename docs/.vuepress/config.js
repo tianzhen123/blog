@@ -38,7 +38,8 @@ module.exports = {
                         ['vue/vuex', "vuex"],
                         ['vue/vue', "vue 面试题"],
                         ['vue/directive', "自定义指令"],
-                        ['vue/优化', "优化指南"]
+                        ['vue/优化', "优化指南"],
+                        ['vue/vue cli3 生成 DllPlugin', "DllPlugin"],
                     ]
                 },
                 {
