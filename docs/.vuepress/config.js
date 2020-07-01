@@ -15,6 +15,7 @@ module.exports = {
                     children: [
                         ['css/css', "css常考面试题"],
                         ['css/canvas', 'canvas'],
+                        ['css/canvas 使用', 'canvas 使用'],
                     ]
                 },
                 {
