@@ -34,7 +34,7 @@ module.exports = {
                     name:'html',
                     collabsable: false,
                     children: [
-                        ['html/index', "html"],
+                        ['html/learn', "html"],
                     ]
                 },
                 {
