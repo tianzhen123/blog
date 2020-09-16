@@ -30,6 +30,14 @@ module.exports = {
                     ]
                 },
                 {
+                    title:'html',
+                    name:'html',
+                    collabsable: false,
+                    children: [
+                        ['html/index', "html"],
+                    ]
+                },
+                {
                     title: "vue",
                     name: "vue",
                     collabsable: false,

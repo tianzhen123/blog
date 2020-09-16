@@ -170,3 +170,6 @@ HTTP协议从未规定过GET/POST请求长度是多少，所谓的请求长度�
 
   解决方案就是设置 SameSite 为 none。
 
+### chrome 浏览器  samesite
+
+https://blog.csdn.net/sinat_36521655/article/details/104844667?fps=1&locationNum=2
