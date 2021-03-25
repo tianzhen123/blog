@@ -11,7 +11,7 @@ meta标签由name和content两个属性来定义，来描述一个HTML网页文�
 - http-equiv，顾名思义，相当于http的文件头作用,比如下面的代码就可以设置http的缓存过期日期
 
 ```html
-＜meta http-equiv="expires" content="Wed, 20 Jun 2019 22:33:00 GMT"＞
+<meta http-equiv="expires" content="Wed, 20 Jun 2019 22:33:00 GMT">
 ```
 
 - viewport，移动前端最熟悉不过，Web开发人员可以控制视口的大小和比例
@@ -25,3 +25,8 @@ meta标签由name和content两个属性来定义，来描述一个HTML网页文�
 ```html
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 ```
+
+### 前端优化
+
+`https://mp.weixin.qq.com/s/3DoBc9qOA-MJaVH260SvUw`
+

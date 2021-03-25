@@ -48,6 +48,7 @@ module.exports = {
                         ['vue/directive', "自定义指令"],
                         ['vue/优化', "优化指南"],
                         ['vue/vue cli3 生成 DllPlugin', "DllPlugin"],
+                        ['vue/vue3', "vue3"],
                     ]
                 },
                 {
@@ -56,7 +57,6 @@ module.exports = {
                     collabsable: false,
                     children: [
                         ['network/network', "网络"],
-                        ['network/https', "https"],
                     ]
                 },
                 {

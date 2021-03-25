@@ -1,5 +1,5 @@
 
-### js 数据类型    
+## js 数据类型    
 
 + 基本类型 string、number、boolean、null、undefined、symbol
 + 引用类型 Object、Array、RegExp、Date、Function
@@ -60,44 +60,45 @@
 
 ​          delay:延迟
 
-### 防抖和节流
+## 防抖和节流
 
 + 节流是一定时间内，回调函数只执行一次。
 
   ```js
-  function throttle(func,wait){
-    	let previous=0; // 记录上次调用时间
-      return function(){
-        		let now = Date.now();
-        		let context = this;
-            let args = arguments;
-        		if(now - previous >= wait){
-              	func.apply(context,args);
-              	previous = now;
-            }
-  		}
+  function throttle(fn,delay){
+      let valid = true
+      return function() {
+         if(!valid){
+             //休息时间
+             return false 
+         }
+         // 工作时间，执行函数并且在间隔期内把状态位设为无效
+          valid = false
+          setTimeout(() => {
+              fn()
+              valid = true;
+          }, delay)
+      }
   }
   ```
 
 + 防抖是一定时间内，回调函数只执行一次，但期间若有事件触发，则重新计时。
 
   ```js
-  function debounce(func){
-    		let timeout;
-    		return function(){
-          	let context = this;
-          	let args = arguments;
-          	if(timeout) clearTimeout(timeout)
-          	timeout = setTimeout(()=>{
-              	func.apply(context,args);
-            },1000)
-  			}
+  function debounce(fn,delay){
+      let timer = null //借助闭包
+      return function() {
+          if(timer){
+              clearTimeout(timer) 
+          }
+          timer = setTimeout(fn,delay) // 简化写法
+      }
   }
   ```
 
 ​	如果遇到的是连续不停的事件，则应该选择节流，因为不停触发的事件会让防抖只会执行一次回调函数
 
-### 图片懒加载实现思路
+## 图片懒加载实现思路
 
 http://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html
 
@@ -123,14 +124,14 @@ http://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html
 - **header压缩**，如上文中所言，对前面提到过HTTP1.x的header带有大量信息，而且每次都要重复发送，HTTP2.0使用encoder来减少需要传输的header大小，通讯双方各自cache一份header fields表，既避免了重复header的传输，又减小了需要传输的大小。
 - **服务端推送**（server push），同SPDY一样，HTTP2.0也具有server push功能。
 
-### 多路复用的好处
+## 多路复用的好处
 
 1. 可以并行交错的发送请求和响应，这些请求和响应之间互不影响
 2. 只使用一个链接即可并行发送多个请求和响应
 3. 消除不必要的延迟，从而减少页面加载的时间
 4. 不必再为绕过HTTP1.x限制而多做很多工作
 
-### 几种判断数据类型的优缺点
+## 几种判断数据类型的优缺点
 
 1. typeof   
 
@@ -154,7 +155,7 @@ http://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html
    + 优点：精准判断数据类型 
    + 缺点：写法繁琐不容易记，推荐进行封装后使用
 
-### 前端有哪些页面优化方法?
+## 前端有哪些页面优化方法?
 
 - 减少 HTTP请求数
 - 从设计实现层面简化页面
@@ -170,13 +171,13 @@ http://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html
 - 在JS中避免“嵌套循环”和 “死循环”
 - 尽可能使用事件委托（事件代理）来处理事件绑定的操作
 
-### export 和 export default 的区别(es6)
+## export 和 export default 的区别(es6)
 
   1. export default 在一个模块里只能有一个，但是export可以有多个
   2. export default 向外暴露的成员，可以用任意的变量来接收
   3. export 向外暴露的成员，需要用{}来接收（按需导出），可以用 as 的方式来起别名，可以同时导出多个
 
-### 阻止冒泡事件和默认事件
+## 阻止冒泡事件和默认事件
 
 + 当需要停止冒泡行为时，可以使用
 
@@ -207,18 +208,18 @@ http://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html
   }
   ```
 
-### 作用域：分为 **全局作用域** 和 **函数作用域**
+## 作用域：分为 **全局作用域** 和 **函数作用域**
 
 1. 全局作用域：代码在程序的任何地方都能被访问，window 对象的内置属性都拥有全局作用域。
   2. 函数作用域：在固定的代码片段才能被访问
   3. 作用域链：**一般情况下，变量取值到 创建 这个变量 的函数的作用域中取值。** **但是如果在当前作用域中没有查到值，就会向上级作用域去查，直到查到全局作用域，这么一个查找过程形成的链条就叫做作用域链。**
 
-### call、bind、apply 区别
+## call、bind、apply 区别
 
 * bind与apply、call最大的区别就是：bind不会立即调用，其他两个会立即调用
 * apply与call的区别是apply第二个是参数组，但是在确定的参数下，还是最好用call，call的效果会更高，但是在函数的延展性上使用apply更好
 
-### 事件循环(Event Loop)
+## 事件循环(Event Loop)
 
 首先，整体的script(作为第一个宏任务)开始执行的时候，会把所有代码分为`同步任务`、`异步任务`两部分
 
@@ -474,7 +475,7 @@ thisArg 是 this 指向
 
 + 函数中不能有重名的参数 
 
-### 闭包
+## 闭包
 
 + 父函数将子函数作为返回值，再将子函数赋值给一个变量，所以子函数会存在于内存中，而子函数依赖于父函数存在，所以父函数也会存在于内存中，也就不会被垃圾回收机制回收。
 
@@ -495,7 +496,7 @@ thisArg 是 this 指向
   }
   ```
 
-### 递归函数
+## 递归函数
 
 + 用递归计算 n 的阶乘	
 
@@ -509,7 +510,7 @@ thisArg 是 this 指向
   console.log(con(4));
   ```
 
-### 拷贝
+## 拷贝
 
 + 浅拷贝
 
@@ -549,18 +550,18 @@ thisArg 是 this 指向
 
      
 
-### let 和 const
+## let 和 const
 
 + let 声明的变量具有块级作用域，切可以改变
 + const 声明的变量具有块级作用域，常量声明后不能更改值，引用数据类型声明可以改变。（声明时必须赋值）
 
-### let 和 var 的区别
+## let 和 var 的区别
 
 1. let 没有变量提升
 2. let 不可以重复定义
 3. 块级作用域
 
-### 箭头函数中的 this
+## 箭头函数中的 this
 
 + 箭头函数不绑定 this，箭头函数中的 this 指向函数定义位置的上下文this
 
@@ -576,7 +577,7 @@ thisArg 是 this 指向
   // 作用域分为全局作用域和函数作用域
   ```
 
-### CommonJS与ES6 Modules规范的区别
+## CommonJS与ES6 Modules规范的区别
 
 - CommonJS模块是运行时加载，ES6 Modules是编译时输出接口
 - CommonJS输出是值的拷贝；ES6 Modules输出的是值的引用，被输出模块的内部的改变会影响引用的改变
@@ -584,7 +585,7 @@ thisArg 是 this 指向
 - CommonJS `this`指向当前模块，ES6 Modules `this`指向`undefined`
 - 且ES6 Modules中没有这些顶层变量：`arguments`、`require`、`module`、`exports`、`__filename`、`__dirname`
 
-### foreach
+## foreach
 
 + **当数组中元素是值类型，forEach绝对不会改变数组；当是引用类型，则可以改变数组**
 
@@ -592,7 +593,7 @@ thisArg 是 this 指向
 
   
 
-### script标签的额 async 和 defer
+## script标签的额 async 和 defer
 
 ```javascript
 <script src="xxx"  async /> //表示应该立即下载脚本，但不应妨碍页面中的其他操作，比如下载其他资源或等待加载其他脚本。只对外部脚本文件有效。
@@ -604,3 +605,11 @@ thisArg 是 this 指向
 4. 移动屏幕适配的所有方式
 5. diff 算法是会遍历所有节点吗
 6. 数据类型判断
+
+## js sdk 通讯方式
+
++ js-sdk优化，也就是oc和js通信的一个方式。一般jssdk有三种方式实现，第一种就是常见的scheme的方式，就是我们在h5页面里面定义一些特殊的链接，拿到这个scheme之后原生拦截。然后把需要的回调函数和参数进行拦截，但这样有个问题，url一般是256个字符，有长度的限制不能无限的传递。
+
+  第二种是iframe的形式，通过后台启一个页面进行拦截取iframe的变更拿到js的方法给oc实现通信，iframe是依赖jssdk.js文件的，需要sdk文件作为桥梁实现通信目的。
+
+  第三种是webkit的方式，他是一种直接调用的方式，无需依赖任何的sdk文件。
