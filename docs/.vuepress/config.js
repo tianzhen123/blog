@@ -13,7 +13,7 @@ module.exports = {
                     name: "面试题",
                     collabsable: false,
                     children: [
-                        ['Interview/index', "常考面试题"],
+                        ['Interview/learn', "常考面试题"],
                     ]
                 },
                 {
@@ -83,7 +83,7 @@ module.exports = {
             {
                 text: "前端",
                 items: [
-                    { text: "面试题", link: "/web/Interview/index"},
+                    { text: "面试题", link: "/web/Interview/learn"},
                     { text: "css", link: "/web/css/css" },
                     { text: "js", link: "/web/js/js" },
                     { text: "vue", link: "/web/vue/vue" },
