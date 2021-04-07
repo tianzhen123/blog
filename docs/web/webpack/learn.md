@@ -1,14 +1,12 @@
-## amd(运行在浏览器端)
+### amd(运行在浏览器端)
 
 + 需要引入 require.js
 
-## common.js(运行在 node 环境)
+### common.js(运行在 node 环境)
 
 + Import 和 module.exports
 
-
-
-# webpack
+### webpack
 
 #### 默认配置文件的名字 webpack.config.js
 
@@ -40,7 +38,7 @@
 4. `devtool:cheap-eval-source-map`
    + 不会生成文件，集成在打包后的文件中，不会产生列
 
-#### webpack3 和 webpack4 的区别
+### webpack3 和 webpack4 的区别
 
 1. webpack4 增加了 model 的配置（只有两种值development | production）
 2. CommonChunksPlugin已经从webpack4中移除。可使用optimization.splitChunks进行模块划分（提取公用代码）。
@@ -50,7 +48,25 @@
 5. vue-loader。使用vue-loader插件为.vue文件中的各部分使用相对应的loader，比如css-loader
 6. UglifyJsPlugin：现在也不需要使用这个plugin了，只需要使用optimization.minimize为true就行，production mode下面自动为true
 
-## 常用的 loader 及其作用：
+### webpack5新特性
+
+官方描述：
+
+1. 使用持久化缓存提高构建性能；
+2. 使用更好的算法和默认值改进长期缓存（long-term caching）；
+3. 清理内部结构而不引入任何破坏性的变化；
+4. 引入一些breaking changes，以便尽可能长的使用v5版本。
+
+通俗版描述：
+
+1. 减小打包后的文件体积
+2. 按需加载支持文件名模式
+3. 使用long-term caching解决生产环境下moduleIds & chunkIds变化的问题
+4. 使用cache: {type: "filesystem"}配置实现持久化缓存，提高构建速度
+5. 优化minSize&maxSize的配置方式
+6. Node.js polyfills 自动加载功能被移除
+
+### 常用的 loader 及其作用：
 
 - style-loader：将CSS添加到DOM的内联样式标签style里
 - css-loader：允许将CSS文件通过require的方式引入，并返回CSS代码
@@ -62,11 +78,18 @@
 - html-minify-loader：压缩HTML文件
 - babel-loader：把ES6文件转换成ES5文件
 
-## 常用插件
+### 常用插件
 
 + HtmlWebpackPlugin 是依据一个简单的模板，帮助生成最终的 Html5 文件，这个文件中自动引用了打包后的 JS 文件。每次编译都在文件名中插入一个不同的哈希值。
 + `CopyWebpackPlugin` : 在 webpack 中拷贝文件和文件夹，一般用于将不需要打包的静态文件 copy 到我们最终打包的文件目录下
 
-## Webpack 打包优化
+### Webpack 打包优化
 
 1. DllPlugin  动态链接库
+
+### webpack中 loader和plugin的区别
+
++ loader用于转换、将A文件进行编译形成B文件
+
++ plugin用于处理打包过程中的自定义操作的扩展器，不直接操作文件
+

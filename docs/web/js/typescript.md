@@ -1,3 +1,5 @@
+[TOC]
+
 ### 一、TypeScript 是什么
 
 TypeScript 是一种由微软开发的自由和开源的编程语言。它是 JavaScript 的一个超集，而且本质上向这个语言添加了可选的静态类型和基于类的面向对象编程。
@@ -55,7 +57,7 @@ let count: number = 10;
 // ES5：var count = 10;
 ```
 
-#### String 类型
+#### 2.3 String 类型
 
 ```typescript
 let name: string = "Semliker";
@@ -216,7 +218,9 @@ value[0][1]; // Error
 
 将 `value` 变量类型设置为 `unknown` 后，这些操作都不再被认为是类型正确的。通过将 `any` 类型改变为 `unknown` 类型，我们已将允许所有更改的默认设置，更改为禁止任何更改。
 
-#### 2.8 Tuple 类型
+#### 2.8 Tuple(元组) 类型
+
+元组：固定长度的数组
 
 众所周知，数组一般由同种类型的值组成，但有时我们需要在单个变量中存储不同类型的值，这时候我们就可以使用元组。在 JavaScript 中是没有元组的，元组是 TypeScript 中特有的类型，其工作方式类似于数组。
 
@@ -327,6 +331,36 @@ function controlFlowAnalysisWithNever(foo: Foo) {
   }
 }
 ```
+
+#### 2.12 object
+
+```typescript
+// {}用来指定对象可以包含哪些属性
+// 语法：{属性名:属性值,属性名:属性值}
+// 在属性名后面加上 ?  表示属性是可选的
+let b: {name:string,age?:number}
+b = {name:'孙悟空',age:12}
+
+// [proName:string]:any 表示任意类型的属性
+let c:{name:string,[propName:string]:any};
+c= {name:'猪八戒',age:18,gender:'男'}
+
+// 定义一个函数
+let d:(a:number,b:number)=>number;
+
+```
+
+#### 2.13 array
+
+```typescript
+// string[] 表示字符串数组
+let e:string[];
+// number[] 表示数值数组
+let f:number[];
+let g:Array<number>;
+```
+
+
 
 ### 三、TypeScript 断言
 
@@ -1317,7 +1351,7 @@ declare type MethodDecorator = <T>(target:Object, propertyKey: string | symbol,
 
 - target: Object - 被装饰的类
 - propertyKey: string | symbol - 方法名
-- descriptor: TypePropertyDescript - 属性描述符
+- descriptor: TypePropertyDescript - 属性描述符 
 
 废话不多说，直接上例子：
 

@@ -1,18 +1,20 @@
+[TOC]
+
 ## Ajax 请求头中常见content-type
 
-1. ## application/x-www-form-urlencoded
+1.  **application/x-www-form-urlencoded**
 
    > 这应该是最常见的 POST 提交数据的方式了。浏览器的原生 form 表单，如果不设置 enctype 属性，那么最终就会以 application/x-www-form-urlencoded 方式提交数据。提交的数据按照 key1=val1&key2=val2 的方式进行编码
 
-2. ## multipart/form-data
+2.  **multipart/form-data**
 
    > 这也是一个常见的 POST 数据提交的方式。我们使用表单上传文件时，就要让 form 的 enctype 等于这个值
 
-3. ## application/json
+3.  **application/json**
 
    > 用来告诉服务端消息主体是序列化后的 JSON 字符串
 
-4. ## text/xml
+4.  **text/xml**
 
 ## 在浏览器输入地址
 
@@ -143,6 +145,19 @@
 #### 为什么是四次而不是三次？
 
 如果是三次的话，那么服务端的 ACK 和 FIN 合成一个挥手，那么长时间的延迟可能让 TCP 一位 FIN 没有达到服务器端，然后让客户的不断的重发 FIN
+
+## session、cookie、localStorage的区别
+
++ 相同点 都是保存在浏览器端，且同源的。
++ 不同点
+  1. cookie数据始终在同源的http请求中携带，即cookie在浏览器和服务器间来回传递。
+  2. session数据放在服务器上
+  3. 而sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。
+  4. cookie数据还有路径（path）的概念，可以限制cookie只属于某个路径下。 存储大小限制也不同，cookie数据不能超过4k，同时因为每次http请求都会携带cookie，所以cookie只适合保存很小的数据。
+  5. sessionStorage和localStorage 虽然也有存储大小的限制，但比cookie大得多，可以达到5M或更大。 数据有效期不同，sessionStorage：仅在当前浏览器窗口关闭前有效，自然也就不可能持久保持；
+  6. localStorage：始终有效，窗口或浏览器关闭也一直保存，因此用作持久数据；
+  7. cookie只在设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭。 作用域不同，sessionStorage不在不同的浏览器窗口中共享，即使是同一个页面；
+  8. localStorage 在所有同源窗口中都是共享的；cookie也是在所有同源窗口中都是共享的。
 
 ## HTTP 常用的请求方式，区别和用途？
 
@@ -283,3 +298,7 @@ HTTP协议从未规定过GET/POST请求长度是多少，所谓的请求长度�
 ### https = 数据加密（对称和非对称） + 网站认证 + 完整性验证 + HTTP
 
 + 通过上文，我们已经知道，HTTPS 就是在 HTTP 传输协议的基础上对网站进行认证，给予它独一无二的身份证明，再对网站数据进行对称加密和非对称加密，并对传输的数据进行完整性验证。
+
+## 图片懒加载实现思路
+
+http://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html

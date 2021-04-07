@@ -9,6 +9,14 @@ module.exports = {
             ],
             "/web/": [
                 {
+                    title: "Interview",
+                    name: "面试题",
+                    collabsable: false,
+                    children: [
+                        ['Interview/index', "常考面试题"],
+                    ]
+                },
+                {
                     title: "css",
                     name: "css",
                     collabsable: false,
@@ -75,6 +83,7 @@ module.exports = {
             {
                 text: "前端",
                 items: [
+                    { text: "面试题", link: "/web/Interview/index"},
                     { text: "css", link: "/web/css/css" },
                     { text: "js", link: "/web/js/js" },
                     { text: "vue", link: "/web/vue/vue" },
