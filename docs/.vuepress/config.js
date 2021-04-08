@@ -7,6 +7,16 @@ module.exports = {
             "/node/": [
                 ["learn", "学习"],
             ],
+            "/dataBase/":[
+                {
+                    title: "数据库",
+                    name: "数据库",
+                    collabsable: false,
+                    children: [
+                        ['mysql/learn', "mysql"],
+                    ]
+                },
+            ],
             "/web/": [
                 {
                     title: "Interview",
