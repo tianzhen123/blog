@@ -16,6 +16,35 @@
 
 4.  **text/xml**
 
+## 简单请求和非简单请求
+
+### 简单请求
+
+满足以下条件的请求即为简单请求：
+
+- 请求方法：GET、POST、HEAD
+- 除了以下的请求头字段之外，没有自定义的请求头
+  - Accept
+  - Accept-Language
+  - Content-Language
+  - Content-Type
+  - [DPR](http://httpwg.org/http-extensions/client-hints.html#dpr)
+  - [Downlink](http://httpwg.org/http-extensions/client-hints.html#downlink)
+  - [Save-Data](http://httpwg.org/http-extensions/client-hints.html#save-data)
+  - [Viewport-Width](http://httpwg.org/http-extensions/client-hints.html#viewport-width)
+  - [Width](http://httpwg.org/http-extensions/client-hints.html#width)
+- Content-Type的值只有以下三种`(Content-Type一般是指在post请求中，get请求中设置没有实际意义)`
+  - text/plain
+  - multipart/form-data
+  - application/x-www-form-urlencoded
+- 请求中的任意XMLHttpRequestUpload 对象均没有注册任何事件监听器 `(未验证)`
+  - XMLHttpRequestUpload 对象可以使用 XMLHttpRequest.upload 属性访问
+- 请求中没有使用 ReadableStream 对象 `(未验证)`
+
+### 复杂请求
+
+非简单请求即为复杂请求。复杂请求我们也可以称之为在实际进行请求之前，需要发起预检请求的请求。
+
 ## 在浏览器输入地址
 
 1. #### 缓存查找

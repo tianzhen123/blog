@@ -22,6 +22,23 @@
 
 let ，展开运算符，箭头函数，数组的解构赋值、对象的解构赋值
 
+## promise
+
+三种状态：
+
+- pending，异步任务正在进行。
+- resolved (也可以叫fulfilled)，异步任务执行成功。
+- rejected，异步任务执行失败。
+
+API：
+
++ Promise.resolve(value)
++ Promise.reject
++ Promise.prototype.then
++ Promise.prototype.catch
++ Promise.race
++ Promise.all
+
 ## foreach 如何跳出循环  
 
 因为forEach()无法通过正常流程终止，所以可以通过抛出异常的方式实现终止　　
@@ -296,7 +313,7 @@ per2.say();
 + insertAdjackentHTML() 支持追加字符串元素
 + appentChild 不支持追加字符串元素，只能先createElement
 
-### 构造函数
+### 构造函数（new 原理）
 
 * 在 new 的时候会执行的四件事
 
@@ -528,10 +545,37 @@ thisArg 是 this 指向
 5. diff 算法是会遍历所有节点吗
 6. 数据类型判断
 
+## cordova
+
+架构包括三部分：
+
+1. web app：html+js+css+config.xml
+2. webview
+3. cordova plugins：camera、media、storage
+
++ js与native的通讯方式：iframe的形式，**通过后台启一个页面进行拦截取iframe的变更拿到js的方法给oc实现通信，iframe是依赖jssdk.js文件的，需要sdk文件作为桥梁实现通信目的。**内部实现则是通过 UIWebview＃stringByEvaluatingJavaScriptFromString的返回值 取得CommandQueue里面的参数转换成JSON数据。
+
 ## js sdk 通讯方式
 
 + js-sdk优化，也就是oc和js通信的一个方式。一般jssdk有三种方式实现，第一种就是常见的scheme的方式，就是我们在h5页面里面定义一些特殊的链接，拿到这个scheme之后原生拦截。然后把需要的回调函数和参数进行拦截，但这样有个问题，url一般是256个字符，有长度的限制不能无限的传递。
 
-  第二种是iframe的形式，通过后台启一个页面进行拦截取iframe的变更拿到js的方法给oc实现通信，iframe是依赖jssdk.js文件的，需要sdk文件作为桥梁实现通信目的。
+  **第二种是iframe的形式，通过后台启一个页面进行拦截取iframe的变更拿到js的方法给oc实现通信，iframe是依赖jssdk.js文件的，需要sdk文件作为桥梁实现通信目的。**内部实现则是通过 UIWebview＃stringByEvaluatingJavaScriptFromString的返回值 取得CommandQueue里面的参数转换成JSON数据。
 
   第三种是webkit的方式，他是一种直接调用的方式，无需依赖任何的sdk文件。
+
+## 纯函数
+
+> 相同的输入，总是会的到相同的输出，并且在执行过程中没有任何副作用。
+
+**执行过程中没有任何副作用**。
+
+这里我们要搞清楚什么是副作用，这里的副作用指的是函数在执行过程中产生了**外部可观察变化**。
+
+1. 发起HTTP请求
+2. 操作DOM
+3. 修改外部数据
+4. console.log()打印数据
+5. 调用Date.now()或者Math.random()
+
+## 前端轮子：https://www.zhihu.com/question/29380608
+

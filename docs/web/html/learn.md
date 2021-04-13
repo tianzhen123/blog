@@ -1,6 +1,6 @@
 [TOC]
 
-### 有哪些常用的meta标签？
+## 有哪些常用的meta标签？
 
 meta标签由name和content两个属性来定义，来描述一个HTML网页文档的`元信息`，例如作者、日期和时间、网页描述、关键词、页面刷新等，除了一些http标准规定了一些name作为大家使用的共识，开发者也可以自定义name。
 
@@ -28,7 +28,7 @@ meta标签由name和content两个属性来定义，来描述一个HTML网页文�
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 ```
 
-### 前端优化
+## 前端优化
 
 `https://mp.weixin.qq.com/s/3DoBc9qOA-MJaVH260SvUw`
 
@@ -36,7 +36,7 @@ meta标签由name和content两个属性来定义，来描述一个HTML网页文�
 
 ​	之间的转换 display:inline  display:block
 
-### translate:移动，transform的一个方法
+## translate:移动，transform的一个方法
 
 + 通过 translate() 方法，元素从其当前位置移动，根据给定的 left（x 坐标） 和 top（y 坐标） 位置参数：
 
@@ -119,3 +119,39 @@ server {
 （2）Pragma: no-cache：和Cache-Control: no-cache区别
 
     Pragma: no-cache跟Cache-Control: no-cache相同，Pragma: no-cache兼容http 1.0 ，Cache-Control: no-cache是http 1.1提供的。因此，Pragma: no-cache可以应用到http 1.0 和http 1.1,而Cache-Control: no-cache只能应用于http 1.1.
+
+## 前端安全
+
+### 1. XSS：攻击者想尽一切办法将可以执行的代码注入到网页中
+
+#### 转义字符
+
+首先，对于用户的输入应该是永远不信任的。最普遍的做法就是转义输入输出的内容，对于引号、尖括号、斜杠进行转义；但是对于显示富文本，通常采用白名单过滤的办法，常用js-xss 来实现
+
+#### CSP建立白名单，两种方式
+
+- 设置 HTTP Header 中的 Content-Security-Policy
+- 设置 meta 标签的方式 <meta http-equiv="Content-Security-Policy">
+
+### 2. CSRF：跨站请求伪造。原理就是攻击者构造出一个后端请求地址，诱导用户点击或者通过某些途径自动发起请求。
+
+防范 CSRF 攻击可以遵循以下几种规则：
+
+- Get 请求不对数据进行修改
+- 不让第三方网站访问到用户 Cookie
+- 阻止第三方网站请求接口
+- 请求时附带验证信息，比如验证码或者 Token
+
+#### SameSite
+
+可以对 Cookie 设置 SameSite 属性。该属性表示 Cookie 不随着跨域请求发送，可以很大程度减少 CSRF 的攻击，但是该属性目前并不是所有浏览器都兼容。
+
+#### Token
+
+服务器下发一个随机 Token，每次发起请求时将 Token 携带上，服务器验证 Token 是否有效。
+
+### 3. 中间人攻击
+
+中间人攻击是攻击方同时与服务端和客户端建立起了连接，并让对方认为连接是安全的，但是实际上整个通信过程都被攻击者控制了。攻击者不仅能获得双方的通信信息，还能修改通信信息。
+
+防御：HTTPS 就可以用来防御中间人攻击，但是并不是说使用了 HTTPS 就可以高枕无忧了，因为如果你没有完全关闭 HTTP 访问的话，攻击方可以通过某些方式将 HTTPS 降级为 HTTP 从而实现中间人攻击。

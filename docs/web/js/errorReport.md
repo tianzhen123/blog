@@ -83,10 +83,6 @@ promise 的报错比较娇贵，`try ……catch`, `window.onerror`, `widow.addE
 1. 如果有catch 等捕获函数，则走catch 捕获函数。catch 捕获函数如果没有抛出新的异常，则下一个then将会认为没有什么报错，every thing is so good , 会继续执行。
 2. 如果没有catch 等捕获函数，我们需要注册 `window.addEventListener('unhandledrejection')` 来处理。
 
-
-
-
-
 ## 如何收集 badjs
 
 - 通过 `errorEvent` 或者 `window.onerror`

@@ -28,7 +28,26 @@
 
 1. Set up注意点
    + 执行时间：在breforeCreate和Created中间，所以在setup函数中无法使用data和methods
-   + setup函数只能试同步的，不能是异步的，如果使用异步，可以用async await转换
+   
+   + setup函数只能是同步的，不能是异步的，如果使用异步，可以用async await转换
+   
+   + 使用 `setup` 函数时，它将接受两个参数：
+   
+     1. `props`：`setup` 函数中的 `props` 是响应式的，当传入新的 prop 时，它将被更新。但是，因为 `props` 是响应式的，你**不能使用 ES6 解构**，因为它会消除 prop 的响应性。如果需要解构 prop，可以通过使用 `setup` 函数中的 [`toRefs`](https://v3.cn.vuejs.org/guide/reactivity-fundamentals.html#响应式状态解构) 来完成此操
+   
+        ```vue
+        import { toRefs } from 'vue'
+        
+        setup(props) {
+        	const { title } = toRefs(props)
+        
+        	console.log(title.value)
+        }
+        ```
+   
+        
+   
+     2. `context`
 2. reactive注意点
    + reactive参数必须是对象(json/arr)
    + 如果给reactive传递了其他对象，默认情况下修改对象是不会自动更新的，如果想更新，可以通过重新赋值的方式
