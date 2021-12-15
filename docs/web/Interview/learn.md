@@ -87,3 +87,30 @@ class App extends React.Component{
 
 ### 可拖曳的树状结构图（https://juejin.cn/post/6949530814354817061）
 
+### 图片懒加载解决方案
+图片懒加载的原理主要是判断当前图片是否到了可视区域这一核心逻辑实现的。这样可以节省带宽，提高网页性能。传统的突破懒加载是通过监听 scroll 事件实现的，但是 scroll 事件会在很短的时间内触发很多次，严重影响页面性能。为提高页面性能，我们可以使用 IntersectionObserver 来实现图片懒加载。
+```
+const imgs = document.querySelectorAll('img[data-src]')
+const config = {
+  rootMargin: '0px',
+  threshold: 0
+}
+let observer = new IntersectionObserver((entries, self) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      let img = entry.target
+      let src = img.dataset.src
+      if (src) {
+        img.src = src
+        img.removeAttribute('data-src')
+      }
+      // 解除观察
+      self.unobserve(entry.target)
+    }
+  })
+}, config)
+
+imgs.forEach((image) => {
+  observer.observe(image)
+})
+```

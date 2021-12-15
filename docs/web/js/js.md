@@ -174,6 +174,17 @@ API：
 * bind与apply、call最大的区别就是：bind不会立即调用，其他两个会立即调用
 * apply与call的区别是apply第二个是参数组，但是在确定的参数下，还是最好用call，call的效果会更高，但是在函数的延展性上使用apply更好
 
+| 宏任务（Macrotask）      | 微任务（Microtask）             |
+| ------------------------ | ------------------------------- |
+| setTimeout               | requestAnimationFrame（有争议） |
+| setInterval              | MutationObserver（浏览器环境）  |
+| MessageChannel           | Promise.[ then/catch/finally ]  |
+| I/O，事件队列            | process.nextTick（Node环境）    |
+| setImmediate（Node环境） | queueMicrotask                  |
+| script（整体代码块）     |                                 |
+
+
+
 ## 事件循环(Event Loop)
 
 首先，整体的script(作为第一个宏任务)开始执行的时候，会把所有代码分为`同步任务`、`异步任务`两部分
