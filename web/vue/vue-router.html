@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Vue-router 原理 | korn的博客</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="专注 前端 技术栈分享，从前端到Node.js再到数据库">
+    
+    <link rel="preload" href="/blog/assets/css/0.styles.a4691601.css" as="style"><link rel="preload" href="/blog/assets/js/app.016ecbb7.js" as="script"><link rel="preload" href="/blog/assets/js/2.928a6fe7.js" as="script"><link rel="preload" href="/blog/assets/js/25.4c8c73e4.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.77b39606.js"><link rel="prefetch" href="/blog/assets/js/11.62e42ab5.js"><link rel="prefetch" href="/blog/assets/js/12.f45a62f5.js"><link rel="prefetch" href="/blog/assets/js/13.2602d9e7.js"><link rel="prefetch" href="/blog/assets/js/14.72eeec06.js"><link rel="prefetch" href="/blog/assets/js/15.933c999c.js"><link rel="prefetch" href="/blog/assets/js/16.fa841be8.js"><link rel="prefetch" href="/blog/assets/js/17.16734f12.js"><link rel="prefetch" href="/blog/assets/js/18.05c8eb0b.js"><link rel="prefetch" href="/blog/assets/js/19.42269bb6.js"><link rel="prefetch" href="/blog/assets/js/20.3bb5a14c.js"><link rel="prefetch" href="/blog/assets/js/21.f33e7cfe.js"><link rel="prefetch" href="/blog/assets/js/22.b073c1aa.js"><link rel="prefetch" href="/blog/assets/js/23.971df460.js"><link rel="prefetch" href="/blog/assets/js/24.7fc7e003.js"><link rel="prefetch" href="/blog/assets/js/26.6b941ac2.js"><link rel="prefetch" href="/blog/assets/js/27.38b0556e.js"><link rel="prefetch" href="/blog/assets/js/28.c824e37c.js"><link rel="prefetch" href="/blog/assets/js/29.44a1851e.js"><link rel="prefetch" href="/blog/assets/js/3.6ab95d19.js"><link rel="prefetch" href="/blog/assets/js/30.50b73b19.js"><link rel="prefetch" href="/blog/assets/js/4.ba3164ba.js"><link rel="prefetch" href="/blog/assets/js/5.75a3592b.js"><link rel="prefetch" href="/blog/assets/js/6.0377ba0c.js"><link rel="prefetch" href="/blog/assets/js/7.888c74f3.js"><link rel="prefetch" href="/blog/assets/js/8.c67934ea.js"><link rel="prefetch" href="/blog/assets/js/9.d9926b68.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.a4691601.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blog/" class="home-link router-link-active"><!----> <span class="site-name">korn的博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blog/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端" class="dropdown-title"><span class="title">前端</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端" class="mobile-dropdown-title"><span class="title">前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/web/Interview/learn.html" class="nav-link">
+  面试题
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/css/css.html" class="nav-link">
+  css
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/js/js.html" class="nav-link">
+  js
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/vue/vue.html" class="nav-link">
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/network/network.html" class="nav-link">
+  network
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/webpack/learn.html" class="nav-link">
+  webpack
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/node/learn.html" class="nav-link">
+  node
+</a></div><div class="nav-item"><a href="/blog/dataBase/mysql/learn.html" class="nav-link">
+  数据库
+</a></div><div class="nav-item"><a href="/blog/git/learn.html" class="nav-link">
+  git
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/blog/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端" class="dropdown-title"><span class="title">前端</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端" class="mobile-dropdown-title"><span class="title">前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/web/Interview/learn.html" class="nav-link">
+  面试题
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/css/css.html" class="nav-link">
+  css
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/js/js.html" class="nav-link">
+  js
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/vue/vue.html" class="nav-link">
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/network/network.html" class="nav-link">
+  network
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/webpack/learn.html" class="nav-link">
+  webpack
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/node/learn.html" class="nav-link">
+  node
+</a></div><div class="nav-item"><a href="/blog/dataBase/mysql/learn.html" class="nav-link">
+  数据库
+</a></div><div class="nav-item"><a href="/blog/git/learn.html" class="nav-link">
+  git
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Interview</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>css</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>js</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>html</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>vue</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blog/web/vue/vue-router.html" aria-current="page" class="active sidebar-link">vue-router</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/blog/web/vue/vue-router.html#router-push和-router-replace的区别" class="sidebar-link">$router.push和$router.replace的区别：</a></li></ul></li><li><a href="/blog/web/vue/vuex.html" class="sidebar-link">vuex</a></li><li><a href="/blog/web/vue/vue.html" class="sidebar-link">vue 面试题</a></li><li><a href="/blog/web/vue/directive.html" class="sidebar-link">自定义指令</a></li><li><a href="/blog/web/vue/优化.html" class="sidebar-link">优化指南</a></li><li><a href="/blog/web/vue/vue cli3 生成 DllPlugin.html" class="sidebar-link">DllPlugin</a></li><li><a href="/blog/web/vue/vue3.html" class="sidebar-link">vue3</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>network</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>webpack</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h3 id="vue-router-原理"><a href="#vue-router-原理" class="header-anchor">#</a> Vue-router 原理</h3> <blockquote><p>SPA(single page application):单一页面应用程序，只有一个完整的页面；它在加载页面时，不会加载整个页面，而是只更新某个指定的容器中内容。<strong>单页面应用(SPA)的核心之一是: 更新视图而不重新请求页面</strong>;vue-router在实现单页面前端路由时，提供了两种方式：Hash模式和History模式；根据mode参数来决定采用哪一种方式。</p></blockquote> <ol><li><h3 id="hash模式"><a href="#hash模式" class="header-anchor">#</a> Hash模式：</h3> <p><strong>vue-router 默认 hash 模式 —— 使用 URL 的 hash 来模拟一个完整的 URL，当 URL 改变时，页面不会重新加载。</strong> hash（#）是URL 的锚点，代表的是网页中的一个位置，单单改变#后的部分，浏览器只会滚动到相应位置，不会重新加载网页，也就是说<strong>hash 出现在 URL 中，但不会被包含在 http 请求中，对后端完全没有影响，因此改变 hash 不会重新加载页面</strong>；同时每一次改变#后的部分，都会在浏览器的访问历史中增加一个记录，使用”后退”按钮，就可以回到上一个位置；所以说<strong>Hash模式通过锚点值的改变，根据不同的值，渲染指定DOM位置的不同数据。hash 模式的原理是 onhashchange 事件(监测hash值变化)，可以在 window 对象上监听这个事件</strong>。</p></li> <li><h3 id="history模式"><a href="#history模式" class="header-anchor">#</a> History模式：</h3> <p>由于hash模式会在url中自带#，如果不想要很丑的 hash，我们可以用路由的 history 模式，只需要在配置路由规则时，加入&quot;mode: 'history'&quot;,<strong>这种模式充分利用了html5 history interface 中新增的 pushState() 和 replaceState() 方法。这两个方法应用于浏览器记录栈，在当前已有的 back、forward、go 基础之上，它们提供了对历史记录修改的功能。只是当它们执行修改时，虽然改变了当前的 URL ，但浏览器不会立即向后端发送请求</strong>。</p></li></ol> <h3 id="vue-router守卫"><a href="#vue-router守卫" class="header-anchor">#</a> vue-router守卫</h3> <blockquote><ol><li><p>导航守卫 router.beforeEach 全局前置守卫</p> <ul><li><p>to: Route: 即将要进入的目标（路由对象）</p></li> <li><p>from: Route: 当前导航正要离开的路由</p></li> <li><p>next: Function: 一定要调用该方法来 resolve 这个钩子。（一定要用这个函数才能去到下一个路由，如果不用就拦截） 执行效果依赖 next 方法的调用参数。</p></li></ul> <ul><li><p>next(): 进行管道中的下一个钩子。如果全部钩子执行完了，则导航的状态就是 confirmed (确认的)。</p></li> <li><p>next(false): 取消进入路由，url地址重置为from路由地址(也就是将要离开的路由地址)。</p></li></ul></li> <li><p>路由独享的守卫 你可以在路由配置上直接定义 beforeEnter 守卫</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">VueRouter</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  routes<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      path<span class="token operator">:</span> <span class="token string">'/foo'</span><span class="token punctuation">,</span>
+      component<span class="token operator">:</span> Foo<span class="token punctuation">,</span>
+      <span class="token function-variable function">beforeEnter</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">to<span class="token punctuation">,</span> from<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token comment">// ...</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li><p>组件内的守卫 你可以在路由组件内直接定义以下路由导航守卫</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> Foo <span class="token operator">=</span> <span class="token punctuation">{</span>
+  template<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">...</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+  <span class="token function">beforeRouteEnter</span> <span class="token punctuation">(</span><span class="token parameter">to<span class="token punctuation">,</span> from<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 在渲染该组件的对应路由被 confirm 前调用</span>
+    <span class="token comment">// 不！能！获取组件实例 `this`</span>
+    <span class="token comment">// 因为当守卫执行前，组件实例还没被创建</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">beforeRouteUpdate</span> <span class="token punctuation">(</span><span class="token parameter">to<span class="token punctuation">,</span> from<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 在当前路由改变，但是该组件被复用时调用</span>
+    <span class="token comment">// 举例来说，对于一个带有动态参数的路径 /foo/:id，在 /foo/1 和 /foo/2 之间跳转的时候，</span>
+    <span class="token comment">// 由于会渲染同样的 Foo 组件，因此组件实例会被复用。而这个钩子就会在这个情况下被调用。</span>
+    <span class="token comment">// 可以访问组件实例 `this`</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">beforeRouteLeave</span> <span class="token punctuation">(</span><span class="token parameter">to<span class="token punctuation">,</span> from<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 导航离开该组件的对应路由时调用，我们用它来禁止用户离开</span>
+    <span class="token comment">// 可以访问组件实例 `this`</span>
+    <span class="token comment">// 比如还未保存草稿，或者在用户离开前，</span>
+    将setInterval销毁，防止离开之后，定时器还在调用。
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div></li></ol></blockquote> <h3 id="vue-router-跳转方式"><a href="#vue-router-跳转方式" class="header-anchor">#</a> vue-router 跳转方式</h3> <ol><li><p>通过使用<code>&lt;router-link&gt;&lt;/router-link&gt;</code>标签实现跳转</p></li> <li><p>this.$router.push() 跳转</p> <blockquote><p>(1)params跳转</p> <p>this.$router.push({path:&quot;/&quot;, params:{id:1}})</p> <p>​             //跳转路径   //跳转参数</p> <p>（2）query跳转</p> <p>this.$router.push({path:&quot;/&quot;, query:{id:1}})</p> <p>​             //跳转路径   //跳转参数</p></blockquote></li> <li><p>返回上一页，不存在历史记录</p> <blockquote><p>this.$router.replace({</p> <p>​	path:&quot;/123&quot;</p> <p>})</p></blockquote></li></ol> <h2 id="router-push和-router-replace的区别"><a href="#router-push和-router-replace的区别" class="header-anchor">#</a> $router.push和$router.replace的区别：</h2> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>goToMenu<span class="token punctuation">&quot;</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>btn btn-success<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>Let's order！<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+.....
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">export</span> <span class="token keyword">default</span><span class="token punctuation">{</span>
+    methods<span class="token operator">:</span><span class="token punctuation">{</span>
+      <span class="token function">goToMenu</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">go</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment">//跳转到上一次浏览的页面</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">'/menu'</span><span class="token punctuation">)</span><span class="token comment">//指定跳转的地址</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token punctuation">{</span>name<span class="token operator">:</span><span class="token string">'menuLink'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token comment">//指定跳转路由的名字下</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'/menu'</span><span class="token punctuation">)</span><span class="token comment">//通过push进行跳转</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span>name<span class="token operator">:</span><span class="token string">'menuLink'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token comment">//通过push进行跳转路由的名字下</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><ul><li>使用push方法的跳转会向 history 栈添加一个新的记录，当我们点击浏览器的返回按钮时可以看到之前的页面。</li> <li>使用replace方法不会向 history 添加新记录，而是替换掉当前的 history 记录，即当replace跳转到的网页后，‘后退’按钮不能查看之前的页面。</li></ul></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新时间:</span> <span class="time">4/13/2021, 8:21:22 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/blog/web/html/learn.html" class="prev">
+        html
+      </a></span> <span class="next"><a href="/blog/web/vue/vuex.html">
+        vuex
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/blog/assets/js/app.016ecbb7.js" defer></script><script src="/blog/assets/js/2.928a6fe7.js" defer></script><script src="/blog/assets/js/25.4c8c73e4.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>vue 开发过程中，保存一次就会编译一次，如果能够减少编译的时间，哪怕是一丁点，也能节省不少时间。开发过程中个人编写的源文件才会频繁变动，而一些库文件我们一般是不会去改动的。如果能把这些库文件提取出来，就能减少打包体积，加快编译速度。本文主要讲述在 vue-cli3 中利用 DllPlugin 来进行预编译。 | korn的博客</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="专注 前端 技术栈分享，从前端到Node.js再到数据库">
+    
+    <link rel="preload" href="/blog/assets/css/0.styles.a4691601.css" as="style"><link rel="preload" href="/blog/assets/js/app.016ecbb7.js" as="script"><link rel="preload" href="/blog/assets/js/2.928a6fe7.js" as="script"><link rel="preload" href="/blog/assets/js/24.7fc7e003.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.77b39606.js"><link rel="prefetch" href="/blog/assets/js/11.62e42ab5.js"><link rel="prefetch" href="/blog/assets/js/12.f45a62f5.js"><link rel="prefetch" href="/blog/assets/js/13.2602d9e7.js"><link rel="prefetch" href="/blog/assets/js/14.72eeec06.js"><link rel="prefetch" href="/blog/assets/js/15.933c999c.js"><link rel="prefetch" href="/blog/assets/js/16.fa841be8.js"><link rel="prefetch" href="/blog/assets/js/17.16734f12.js"><link rel="prefetch" href="/blog/assets/js/18.05c8eb0b.js"><link rel="prefetch" href="/blog/assets/js/19.42269bb6.js"><link rel="prefetch" href="/blog/assets/js/20.3bb5a14c.js"><link rel="prefetch" href="/blog/assets/js/21.f33e7cfe.js"><link rel="prefetch" href="/blog/assets/js/22.b073c1aa.js"><link rel="prefetch" href="/blog/assets/js/23.971df460.js"><link rel="prefetch" href="/blog/assets/js/25.4c8c73e4.js"><link rel="prefetch" href="/blog/assets/js/26.6b941ac2.js"><link rel="prefetch" href="/blog/assets/js/27.38b0556e.js"><link rel="prefetch" href="/blog/assets/js/28.c824e37c.js"><link rel="prefetch" href="/blog/assets/js/29.44a1851e.js"><link rel="prefetch" href="/blog/assets/js/3.6ab95d19.js"><link rel="prefetch" href="/blog/assets/js/30.50b73b19.js"><link rel="prefetch" href="/blog/assets/js/4.ba3164ba.js"><link rel="prefetch" href="/blog/assets/js/5.75a3592b.js"><link rel="prefetch" href="/blog/assets/js/6.0377ba0c.js"><link rel="prefetch" href="/blog/assets/js/7.888c74f3.js"><link rel="prefetch" href="/blog/assets/js/8.c67934ea.js"><link rel="prefetch" href="/blog/assets/js/9.d9926b68.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.a4691601.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blog/" class="home-link router-link-active"><!----> <span class="site-name">korn的博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blog/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端" class="dropdown-title"><span class="title">前端</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端" class="mobile-dropdown-title"><span class="title">前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/web/Interview/learn.html" class="nav-link">
+  面试题
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/css/css.html" class="nav-link">
+  css
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/js/js.html" class="nav-link">
+  js
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/vue/vue.html" class="nav-link">
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/network/network.html" class="nav-link">
+  network
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/webpack/learn.html" class="nav-link">
+  webpack
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/node/learn.html" class="nav-link">
+  node
+</a></div><div class="nav-item"><a href="/blog/dataBase/mysql/learn.html" class="nav-link">
+  数据库
+</a></div><div class="nav-item"><a href="/blog/git/learn.html" class="nav-link">
+  git
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/blog/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端" class="dropdown-title"><span class="title">前端</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端" class="mobile-dropdown-title"><span class="title">前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/web/Interview/learn.html" class="nav-link">
+  面试题
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/css/css.html" class="nav-link">
+  css
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/js/js.html" class="nav-link">
+  js
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/vue/vue.html" class="nav-link">
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/network/network.html" class="nav-link">
+  network
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/webpack/learn.html" class="nav-link">
+  webpack
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/node/learn.html" class="nav-link">
+  node
+</a></div><div class="nav-item"><a href="/blog/dataBase/mysql/learn.html" class="nav-link">
+  数据库
+</a></div><div class="nav-item"><a href="/blog/git/learn.html" class="nav-link">
+  git
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Interview</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>css</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>js</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>html</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>vue</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blog/web/vue/vue-router.html" class="sidebar-link">vue-router</a></li><li><a href="/blog/web/vue/vuex.html" class="sidebar-link">vuex</a></li><li><a href="/blog/web/vue/vue.html" class="sidebar-link">vue 面试题</a></li><li><a href="/blog/web/vue/directive.html" class="sidebar-link">自定义指令</a></li><li><a href="/blog/web/vue/优化.html" class="sidebar-link">优化指南</a></li><li><a href="/blog/web/vue/vue cli3 生成 DllPlugin.html" class="active sidebar-link">DllPlugin</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/blog/web/vue/vue cli3 生成 DllPlugin.html#_1-安装相关插件" class="sidebar-link">1. 安装相关插件</a></li><li class="sidebar-sub-header"><a href="/blog/web/vue/vue cli3 生成 DllPlugin.html#_2-编写配置文件" class="sidebar-link">2. 编写配置文件</a></li><li class="sidebar-sub-header"><a href="/blog/web/vue/vue cli3 生成 DllPlugin.html#_3-生成-dll" class="sidebar-link">3. 生成 dll</a></li><li class="sidebar-sub-header"><a href="/blog/web/vue/vue cli3 生成 DllPlugin.html#_4-忽略已编译文件" class="sidebar-link">4. 忽略已编译文件</a></li><li class="sidebar-sub-header"><a href="/blog/web/vue/vue cli3 生成 DllPlugin.html#_5-index-html-中加载生成的-dll-文件" class="sidebar-link">5. index.html 中加载生成的 dll 文件</a></li></ul></li><li><a href="/blog/web/vue/vue3.html" class="sidebar-link">vue3</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>network</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>webpack</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h3 id="vue-开发过程中-保存一次就会编译一次-如果能够减少编译的时间-哪怕是一丁点-也能节省不少时间。开发过程中个人编写的源文件才会频繁变动-而一些库文件我们一般是不会去改动的。如果能把这些库文件提取出来-就能减少打包体积-加快编译速度。本文主要讲述在-vue-cli3-中利用-dllplugin-来进行预编译。"><a href="#vue-开发过程中-保存一次就会编译一次-如果能够减少编译的时间-哪怕是一丁点-也能节省不少时间。开发过程中个人编写的源文件才会频繁变动-而一些库文件我们一般是不会去改动的。如果能把这些库文件提取出来-就能减少打包体积-加快编译速度。本文主要讲述在-vue-cli3-中利用-dllplugin-来进行预编译。" class="header-anchor">#</a> vue 开发过程中，保存一次就会编译一次，如果能够减少编译的时间，哪怕是一丁点，也能节省不少时间。开发过程中个人编写的源文件才会频繁变动，而一些库文件我们一般是不会去改动的。如果能把这些库文件提取出来，就能减少打包体积，加快编译速度。本文主要讲述在 vue-cli3 中利用 DllPlugin 来进行预编译。</h3> <h2 id="_1-安装相关插件"><a href="#_1-安装相关插件" class="header-anchor">#</a> 1. 安装相关插件</h2> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">yarn</span> <span class="token function">add</span> webpack-cli@^3.2.3 add-asset-html-webpack-plugin@^3.1.3 clean-webpack-plugin@^1.0.1 --dev
+</code></pre></div><h2 id="_2-编写配置文件"><a href="#_2-编写配置文件" class="header-anchor">#</a> 2. 编写配置文件</h2> <p>在项目根目录下新建 webpack.dll.conf.js，输入以下内容。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> webpack <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'webpack'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> CleanWebpackPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'clean-webpack-plugin'</span><span class="token punctuation">)</span>
+
+<span class="token comment">// dll文件存放的目录</span>
+<span class="token keyword">const</span> dllPath <span class="token operator">=</span> <span class="token string">'public/vendor'</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  entry<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 需要提取的库文件</span>
+    vendor<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'vue'</span><span class="token punctuation">,</span> <span class="token string">'vue-router'</span><span class="token punctuation">,</span> <span class="token string">'vuex'</span><span class="token punctuation">,</span> <span class="token string">'axios'</span><span class="token punctuation">,</span> <span class="token string">'element-ui'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  output<span class="token operator">:</span> <span class="token punctuation">{</span>
+    path<span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> dllPath<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    filename<span class="token operator">:</span> <span class="token string">'[name].dll.js'</span><span class="token punctuation">,</span>
+    <span class="token comment">// vendor.dll.js中暴露出的全局变量名</span>
+    <span class="token comment">// 保持与 webpack.DllPlugin 中名称一致</span>
+    library<span class="token operator">:</span> <span class="token string">'[name]_[hash]'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token comment">// 清除之前的dll文件</span>
+    <span class="token keyword">new</span> <span class="token class-name">CleanWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'*.*'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      root<span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> dllPath<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token comment">// 设置环境变量</span>
+    <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>DefinePlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token string">'process.env'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token constant">NODE_ENV</span><span class="token operator">:</span> <span class="token string">'production'</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token comment">// manifest.json 描述动态链接库包含了哪些内容</span>
+    <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>DllPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      path<span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> dllPath<span class="token punctuation">,</span> <span class="token string">'[name]-manifest.json'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token comment">// 保持与 output.library 中名称一致</span>
+      name<span class="token operator">:</span> <span class="token string">'[name]_[hash]'</span><span class="token punctuation">,</span>
+      context<span class="token operator">:</span> process<span class="token punctuation">.</span><span class="token function">cwd</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="_3-生成-dll"><a href="#_3-生成-dll" class="header-anchor">#</a> 3. 生成 dll</h2> <p>在 package.json 中加入如下命令</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token string">&quot;scripts&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token operator">...</span>
+    <span class="token string">&quot;dll&quot;</span><span class="token operator">:</span> <span class="token string">&quot;webpack -p --progress --config ./webpack.dll.conf.js&quot;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>控制台运行</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">yarn</span> run dll
+</code></pre></div><h2 id="_4-忽略已编译文件"><a href="#_4-忽略已编译文件" class="header-anchor">#</a> 4. 忽略已编译文件</h2> <p>为了节约编译的时间，这时间我们需要告诉 webpack 公共库文件已经编译好了，减少 webpack 对公共库的编译时间。在项目根目录下找到 vue.config.js ( 没有则新建 )，配置如下:</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> webpack <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'webpack'</span><span class="token punctuation">)</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token operator">...</span>
+    configureWebpack<span class="token operator">:</span> <span class="token punctuation">{</span>
+        plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>DllReferencePlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            context<span class="token operator">:</span> process<span class="token punctuation">.</span><span class="token function">cwd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            manifest<span class="token operator">:</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./public/vendor/vendor-manifest.json'</span><span class="token punctuation">)</span>
+          <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="_5-index-html-中加载生成的-dll-文件"><a href="#_5-index-html-中加载生成的-dll-文件" class="header-anchor">#</a> 5. index.html 中加载生成的 dll 文件</h2> <p>经过上面的配置，公共库提取出来了，编译速度快了，但如果不引用生成的 dll 文件，网页是不能正常工作的。
+打开 public/index.html，插入 script 标签。</p> <div class="language-html extra-class"><pre class="language-html"><code>...
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>./vendor/vendor.dll.js<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>到此公用库提取完成，但总觉得最后一部手工插入 script 不太优雅，下面介绍下如何自动引入生成的 dll 文件。打开 vue.config.js 在 configureWebpack plugins 节点下，配置 add-asset-html-webpack-plugin</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> webpack <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'webpack'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> AddAssetHtmlPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'add-asset-html-webpack-plugin'</span><span class="token punctuation">)</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token operator">...</span>
+    configureWebpack<span class="token operator">:</span> <span class="token punctuation">{</span>
+        plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>DllReferencePlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            context<span class="token operator">:</span> process<span class="token punctuation">.</span><span class="token function">cwd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            manifest<span class="token operator">:</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./public/vendor/vendor-manifest.json'</span><span class="token punctuation">)</span>
+          <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+          <span class="token comment">// 将 dll 注入到 生成的 html 模板中</span>
+          <span class="token keyword">new</span> <span class="token class-name">AddAssetHtmlPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            <span class="token comment">// dll文件位置</span>
+            filepath<span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'./public/vendor/*.js'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token comment">// dll 引用路径</span>
+            publicPath<span class="token operator">:</span> <span class="token string">'./vendor'</span><span class="token punctuation">,</span>
+            <span class="token comment">// dll最终输出的目录</span>
+            outputPath<span class="token operator">:</span> <span class="token string">'./vendor'</span>
+          <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>结束</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新时间:</span> <span class="time">7/1/2020, 2:53:54 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/blog/web/vue/优化.html" class="prev">
+        优化指南
+      </a></span> <span class="next"><a href="/blog/web/vue/vue3.html">
+        vue3
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/blog/assets/js/app.016ecbb7.js" defer></script><script src="/blog/assets/js/2.928a6fe7.js" defer></script><script src="/blog/assets/js/24.7fc7e003.js" defer></script>
+  </body>
+</html>

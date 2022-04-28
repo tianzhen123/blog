@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>前端错误上报 | korn的博客</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="专注 前端 技术栈分享，从前端到Node.js再到数据库">
+    
+    <link rel="preload" href="/blog/assets/css/0.styles.a4691601.css" as="style"><link rel="preload" href="/blog/assets/js/app.016ecbb7.js" as="script"><link rel="preload" href="/blog/assets/js/2.928a6fe7.js" as="script"><link rel="preload" href="/blog/assets/js/17.16734f12.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.77b39606.js"><link rel="prefetch" href="/blog/assets/js/11.62e42ab5.js"><link rel="prefetch" href="/blog/assets/js/12.f45a62f5.js"><link rel="prefetch" href="/blog/assets/js/13.2602d9e7.js"><link rel="prefetch" href="/blog/assets/js/14.72eeec06.js"><link rel="prefetch" href="/blog/assets/js/15.933c999c.js"><link rel="prefetch" href="/blog/assets/js/16.fa841be8.js"><link rel="prefetch" href="/blog/assets/js/18.05c8eb0b.js"><link rel="prefetch" href="/blog/assets/js/19.42269bb6.js"><link rel="prefetch" href="/blog/assets/js/20.3bb5a14c.js"><link rel="prefetch" href="/blog/assets/js/21.f33e7cfe.js"><link rel="prefetch" href="/blog/assets/js/22.b073c1aa.js"><link rel="prefetch" href="/blog/assets/js/23.971df460.js"><link rel="prefetch" href="/blog/assets/js/24.7fc7e003.js"><link rel="prefetch" href="/blog/assets/js/25.4c8c73e4.js"><link rel="prefetch" href="/blog/assets/js/26.6b941ac2.js"><link rel="prefetch" href="/blog/assets/js/27.38b0556e.js"><link rel="prefetch" href="/blog/assets/js/28.c824e37c.js"><link rel="prefetch" href="/blog/assets/js/29.44a1851e.js"><link rel="prefetch" href="/blog/assets/js/3.6ab95d19.js"><link rel="prefetch" href="/blog/assets/js/30.50b73b19.js"><link rel="prefetch" href="/blog/assets/js/4.ba3164ba.js"><link rel="prefetch" href="/blog/assets/js/5.75a3592b.js"><link rel="prefetch" href="/blog/assets/js/6.0377ba0c.js"><link rel="prefetch" href="/blog/assets/js/7.888c74f3.js"><link rel="prefetch" href="/blog/assets/js/8.c67934ea.js"><link rel="prefetch" href="/blog/assets/js/9.d9926b68.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.a4691601.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blog/" class="home-link router-link-active"><!----> <span class="site-name">korn的博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blog/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端" class="dropdown-title"><span class="title">前端</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端" class="mobile-dropdown-title"><span class="title">前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/web/Interview/learn.html" class="nav-link">
+  面试题
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/css/css.html" class="nav-link">
+  css
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/js/js.html" class="nav-link">
+  js
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/vue/vue.html" class="nav-link">
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/network/network.html" class="nav-link">
+  network
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/webpack/learn.html" class="nav-link">
+  webpack
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/node/learn.html" class="nav-link">
+  node
+</a></div><div class="nav-item"><a href="/blog/dataBase/mysql/learn.html" class="nav-link">
+  数据库
+</a></div><div class="nav-item"><a href="/blog/git/learn.html" class="nav-link">
+  git
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/blog/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端" class="dropdown-title"><span class="title">前端</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端" class="mobile-dropdown-title"><span class="title">前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/web/Interview/learn.html" class="nav-link">
+  面试题
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/css/css.html" class="nav-link">
+  css
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/js/js.html" class="nav-link">
+  js
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/vue/vue.html" class="nav-link">
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/network/network.html" class="nav-link">
+  network
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/webpack/learn.html" class="nav-link">
+  webpack
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/node/learn.html" class="nav-link">
+  node
+</a></div><div class="nav-item"><a href="/blog/dataBase/mysql/learn.html" class="nav-link">
+  数据库
+</a></div><div class="nav-item"><a href="/blog/git/learn.html" class="nav-link">
+  git
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Interview</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>css</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>js</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blog/web/js/js.html" class="sidebar-link">js常考面试题</a></li><li><a href="/blog/web/js/errorReport.html" aria-current="page" class="active sidebar-link">错误上报</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/blog/web/js/errorReport.html#一、代码执行错误" class="sidebar-link">一、代码执行错误</a></li><li class="sidebar-sub-header"><a href="/blog/web/js/errorReport.html#如何收集-badjs" class="sidebar-link">如何收集 badjs</a></li></ul></li><li><a href="/blog/web/js/this 指向.html" class="sidebar-link">this 指向</a></li><li><a href="/blog/web/js/typescript.html" class="sidebar-link">typescript</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>html</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>vue</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>network</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>webpack</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="前端错误上报"><a href="#前端错误上报" class="header-anchor">#</a> 前端错误上报</h1> <h2 id="一、代码执行错误"><a href="#一、代码执行错误" class="header-anchor">#</a> 一、代码执行错误</h2> <h3 id="_1、try-catch"><a href="#_1、try-catch" class="header-anchor">#</a> 1、try-catch</h3> <p>​	缺点：</p> <ol><li><p>使用<code>try... catch</code> 包裹，影响代码可读性。</p></li> <li><p>无法处理语法错误</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">try</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> error <span class="token operator">=</span> <span class="token string">'error'</span>；   <span class="token comment">// 中文输入法的；</span>
+<span class="token punctuation">}</span> <span class="token keyword">catch</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'我感知不到错误'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div></li> <li><p>无法处理异步中的错误</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">try</span> <span class="token punctuation">{</span>
+  <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    error        <span class="token comment">// 异步错误</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span> <span class="token keyword">catch</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'我感知不到错误'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div></li></ol> <h3 id="_2、window-onerror"><a href="#_2、window-onerror" class="header-anchor">#</a> 2、window.onerror</h3> <p>​	window.onerror要强那么一丢丢。无论是异步还是非异步错误，onerror 都能捕获到运行时错误。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">/**
+ * @param {String}  errorMessage   错误信息
+ * @param {String}  scriptURI      出错的文件
+ * @param {Long}    lineNumber     出错代码的行号
+ * @param {Long}    columnNumber   出错代码的列号
+ * @param {Object}  errorObj       错误的详细信息，Anything
+ */</span>
+window<span class="token punctuation">.</span><span class="token function-variable function">onerror</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">errorMessage<span class="token punctuation">,</span> 
+scriptURI<span class="token punctuation">,</span> 
+lineNumber<span class="token punctuation">,</span>
+columnNumber<span class="token punctuation">,</span>
+errorObj</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+    <span class="token comment">// code..</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>​	window.onerror 的缺点：</p> <ol><li>监听不到资源加载的报错</li> <li>onerror 事件处理函数只能声明一次，不会重复执行多个回调</li></ol> <h3 id="_3、window-addeventlistener-error"><a href="#_3、window-addeventlistener-error" class="header-anchor">#</a> 3、window.addEventListener('error')</h3> <p>window.addEventListener 可以监听到资源加载报错，也可以注册多个事件处理函数。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">var</span> fn <span class="token operator">=</span> window<span class="token punctuation">.</span><span class="token function-variable function">onerror</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>   <span class="token comment">// 只能监听到js执行的错误，无法监听资源加载的错误</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+window<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">&quot;error&quot;</span><span class="token punctuation">,</span> fn<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 可以监听到js执行的错误，和资源加载的错误</span>
+window<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">&quot;error&quot;</span><span class="token punctuation">,</span> fn<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>为捕获状态时（第三个参数为true）能捕获到js执行错误，也能捕获带有src的标签元素的加载错误。</p> <p>为冒泡状态时（第三个参数为false）能捕获到js执行错误，不能捕获带有src的标签元素的加载错误。</p> <h3 id="_4、promise-中的异常"><a href="#_4、promise-中的异常" class="header-anchor">#</a> 4、promise 中的异常</h3> <p>promise 的报错比较娇贵，<code>try ……catch</code>, <code>window.onerror</code>, <code>widow.addEventlistener</code> 都无法监听到promise 的报错。</p> <p><code>promise</code> 中的报错顺序是：</p> <ol><li>如果有catch 等捕获函数，则走catch 捕获函数。catch 捕获函数如果没有抛出新的异常，则下一个then将会认为没有什么报错，every thing is so good , 会继续执行。</li> <li>如果没有catch 等捕获函数，我们需要注册 <code>window.addEventListener('unhandledrejection')</code> 来处理。</li></ol> <h2 id="如何收集-badjs"><a href="#如何收集-badjs" class="header-anchor">#</a> 如何收集 badjs</h2> <ul><li>通过 <code>errorEvent</code> 或者 <code>window.onerror</code></li> <li>特殊情况下可以考虑使用 <code>try...catch</code></li></ul> <h3 id="badjs-上报"><a href="#badjs-上报" class="header-anchor">#</a> badjs 上报</h3> <ul><li>在 url 上拼接 error.stack 的信息</li> <li>用 img 等方式发送数据，注意长度</li></ul> <h3 id="badjs-分析"><a href="#badjs-分析" class="header-anchor">#</a> badjs 分析</h3> <ul><li>通过栈信息，人工回溯代码</li> <li>通过 UA 简单判断环境和用户身份</li> <li>对于 Script error 信息，得不到太多有用的价值，分析的时候可以跳过。但是要想办法在上报的时候把它&quot;解构&quot;</li></ul> <h3 id="常见的导致-script-error-的场景"><a href="#常见的导致-script-error-的场景" class="header-anchor">#</a> 常见的导致 Script error 的场景</h3> <ul><li>跨域脚本，并且未设置 crossorigin 里发生异常</li> <li>jsonp，未设置 crossorigin，其对于的 script 生成的 js 脚本里发生异常</li> <li>iOS 下的 跨域脚本 异步代码 内发生异常</li> <li>iOS 下 native 主动执行 js 代码发生异常</li></ul> <h3 id="关于异步代码需要注意的点"><a href="#关于异步代码需要注意的点" class="header-anchor">#</a> 关于异步代码需要注意的点</h3> <ul><li>ios 下的跨域<strong>异步</strong>代码无法解析 Script error</li> <li>try catch 无法抓到<strong>异步</strong>代码的错误</li> <li>jsonp 大多是<strong>同步</strong>代码</li></ul></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新时间:</span> <span class="time">4/13/2021, 8:21:22 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/blog/web/js/js.html" class="prev">
+        js常考面试题
+      </a></span> <span class="next"><a href="/blog/web/js/this 指向.html">
+        this 指向
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/blog/assets/js/app.016ecbb7.js" defer></script><script src="/blog/assets/js/2.928a6fe7.js" defer></script><script src="/blog/assets/js/17.16734f12.js" defer></script>
+  </body>
+</html>
