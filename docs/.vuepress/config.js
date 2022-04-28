@@ -87,6 +87,9 @@ module.exports = {
                 }
 
             ],
+            "/git/": [
+                ["learn", "学习"],
+            ],
         },
         nav: [
             { text: "主页", link: "/" },
@@ -102,6 +105,8 @@ module.exports = {
                 ]
             },
             { text: "node", link: "/node/learn" },
+            { text: "数据库", link: "/dataBase/mysql/learn" },
+            { text: "git", link: "/git/learn" },
         ],
         plugins: [
             ["@vuepress/back-to-top"], // 返回顶部
