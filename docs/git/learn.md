@@ -11,6 +11,7 @@
 8. git 回滚到某个版本：git reset --hard [branch_version]
 9. git 把本地强制覆盖到远程：git push -f -u origin [branch_name]
 10. Git 拉取某一次提交的代码版本到本地分支：git checkout -b 分之名 远程仓库的commitId
+11. git 新建空白分支 git checkout --orphan [branch_name]
 ### Git暂存管理
 1. git stash                        # 暂存  
 2. git stash list                   # 列所有stash  
